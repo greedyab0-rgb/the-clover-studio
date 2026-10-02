@@ -24,7 +24,7 @@
   .nav-links a{color:var(--ink);position:relative}
   .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--green);transition:width .3s}
   .nav-links a:hover::after{width:100%}
-  .cta-btn{background:var(--blue);color:#fff;padding:10px 22px;border-radius:50px;font-size:.82rem;font-weight:300;letter-spacing:.08em;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(107,134,176,.25)}
+  .cta-btn{background:var(--blue);color:#fff;padding:10px 22px;border-radius:50px;font-weight:300;letter-spacing:.08em;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(107,134,176,.25)}
   .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(107,134,176,.35)}
 
   /* HERO */
@@ -97,8 +97,51 @@
   footer{padding:24px 0;text-align:center;font-family:'Jost',sans-serif;font-size:.78rem;color:#A89B8D;letter-spacing:.06em}
   footer .heart{color:var(--rose)}
 
+  /* Mobile menu toggle */
+  .menu-toggle{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:5px;
+    width:36px;height:28px;
+    background:none;
+    border:1px solid var(--ink);
+    border-radius:10px;
+    cursor:pointer;
+    padding:5px;
+  }
+  .menu-toggle span{width:18px;height:2px;background:var(--ink);display:block;border-radius:1px}
+
   @media(max-width:860px){
-    .hero{padding:90px 0 100px}.about-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.nav-links{display:none}
+    .hero{padding:90px 0 100px}
+    .about-grid{grid-template-columns:1fr}
+    .contact-grid{grid-template-columns:1fr}
+    .nav-links{
+      display:none;
+      position:absolute;
+      top:100%;left:0;right:0;
+      background:rgba(255,248,236,.98);
+      backdrop-filter:blur(12px);
+      flex-direction:column;
+      gap:0;
+      padding:18px 24px 24px;
+      border-bottom:1px solid var(--shadow);
+      box-shadow:0 8px 24px rgba(58,53,48,.10);
+      z-index:90;
+    }
+    .nav-links.open{display:flex}
+    .nav-links.open a{padding:12px 0;border-bottom:1px solid var(--shadow);font-size:.9rem}
+    .menu-toggle{display:flex}
+    .logo-mark{font-size:1.1rem}
+    .logo-mark span{font-size:.78rem}
+    .logo-mark svg{width:26px;height:26px}
+    .cta-btn{font-size:.72rem;padding:8px 14px}
+    .hero-btns{flex-direction:column;align-items:stretch;gap:12px}
+    .hero-btns .cta-btn,.hero-btns .btn-secondary{width:100%;display:block;text-align:center}
+    .cards-row{gap:16px}
+    .occ-card{width:100%;max-width:320px;padding:24px 20px}
+    .step{padding:20px}
   }
 </style>
 </head>
@@ -111,7 +154,8 @@
       The clover <span>studio</span>
     </a>
     <div style="display:flex;align-items:center;gap:24px">
-      <div class="nav-links" role="menubar">
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="navLinks" role="menubar">
         <a href="#about">About</a>
         <a href="#bouquets">Bouquets</a>
         <a href="#order">Order</a>
@@ -248,6 +292,21 @@
 <footer>
   <div class="container">The Clover Studio — Handcrafted bouquets from Dhaka. <span class="heart">Made with love.</span> 2026.</div>
 </footer>
+
+<script>
+  var toggle = document.getElementById('menuToggle');
+  var nav = document.getElementById('navLinks');
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
 
 </body>
 </html>
