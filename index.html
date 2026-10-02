@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Clover Studio — Handcrafted Bouquets from Dhaka</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Parisienne&family=Lora:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:#FFF8EC; --ink:#3A3530; --blue:#6B86B0; --green:#7BA87B; --rose:#D99A9A; --yellow:#F2D88B; --paper:#FFFCF7; --shadow:#E8DDD0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;letter-spacing:.01em}
+  img{max-width:100%;display:block;border-radius:12px}
+  a{color:var(--blue);text-decoration:none}
+  .container{max-width:1100px;margin:0 auto;padding:0 24px}
+  header{position:sticky;top:0;z-index:100;background:rgba(255,248,236,.92);backdrop-filter:sblur(12px);border-bottom:1px solid var(--shadow);padding:14px 0}
+  nav{display:flex;align-items:center;justify-content:space-between}
+  .logo-mark{display:flex;align-items:center;gap:10px;font-family:'Parisienne',cursive;font-size:1.7rem;color:var(--blue);line-height:1}
+  .logo-mark span{font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:var(--ink);opacity:.9}
+  .nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:400;letter-spacing:.06em;text-transform:uppercase}
+  .nav-links a{color:var(--ink);position:relative}
+  .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--green);transition:width .3s}
+  .nav-links a:hover::after{width:100%}
+  .cta-btn{background:var(--blue);color:#fff;padding:10px 22px;border-radius:50px;font-size:.82rem;font-weight:300;letter-spacing:.08em;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(107,134,176,.25)}
+  .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(107,134,176,.35)}
+
+  /* HERO */
+  .hero{position:relative;padding:120px 0 140px;overflow:hidden}
+  .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.22;filter:saturate(.7)}
+  .hero-inner{position:relative;z-index:2;max-width:720px}
+  .hero .label{font-family:'Jost',sans-serif;font-size:.75rem;text-transform:uppercase;letter-spacing:.18em;color:var(--green);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+  .hero .label::before{content:'';display:block;width:40px;height:1px;background:var(--green)}
+  h1{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,7vw,5.5rem);font-weight:400;line-height:1.05;color:var(--ink);letter-spacing:-.02em}
+  h1 em{font-family:'Parisienne',cursive;font-style:normal;color:var(--blue);font-weight:400;display:block;font-size:1.05em;margin-top:-.15em}
+  .hero p{font-family:'Lora',serif;font-size:1.25rem;color:#574F48;margin-top:22px;max-width:520px}
+  .hero-btns{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn-secondary{border:1px solid var(--ink);color:var(--ink);padding:12px 28px;border-radius:50px;font-size:.9rem;transition:background .2s;color:var(--ink);display:inline-block}
+  .btn-secondary:hover{background:var(--ink);color:#fff}
+
+  /* SECTIONS */
+  section{padding:90px 0}
+  .section-header{text-align:center;margin-bottom:60px}
+  .section-header h2{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--ink);font-weight:400;letter-spacing:-.01em}
+  .section-header .sub{font-family:'Lora',serif;font-style:italic;color:#8A7E72;font-size:1.05rem;margin-top:8px}
+
+  /* ABOUT */
+  .about{background:var(--paper);border-top:1px solid var(--shadow);border-bottom:1px solid var(--shadow)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .about-text h3{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:16px;color:var(--ink)}
+  .about-text p{font-family:'Lora',serif;color:#574F48;margin-bottom:14px;font-size:1.05rem}
+  .about-text blockquote{border-left:3px solid var(--green);padding-left:20px;margin:24px 0;font-family:'Lora',serif;font-style:italic;color:var(--blue);font-size:1.15rem}
+  .about-img{border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(58,53,48,.12)}
+  .about-img img{width:100%;height:420px;object-fit:cover}
+
+  /* PRODUCTS */
+  .products{background:var(--cream)}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:28px}
+  .card{background:var(--paper);border:1px solid var(--shadow);border-radius:16px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+  .card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(58,53,48,.10)}
+  .card img{width:100%;height:320px;object-fit:cover;border-radius:0}
+  .card-body{padding:22px 22px 26px}
+  .card-body h4{font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:6px}
+  .card-body .tag{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--green);font-weight:400;margin-bottom:8px}
+  .card-body p{font-family:'Lora',serif;font-size:.95rem;color:#574F48}
+  .price-note{font-size:.85rem;color:#8A7E72;margin-top:10px;font-family:'Jost',sans-serif;font-style:italic}
+
+  /* OCCASIONS */
+  .occasions{background:#FBF3DD;border-top:1px dashed var(--shadow);border-bottom:1px dashed var(--shadow)}
+  .cards-row{display:flex;gap:28px;justify-content:center;flex-wrap:wrap}
+  .occ-card{background:var(--paper);border:1px solid var(--shadow);border-radius:14px;padding:32px 28px;width:260px;text-align:center;transition:transform .2s}
+  .occ-card:hover{transform:translateY(-4px)}
+  .occ-card .icon{font-size:2.4rem;margin-bottom:12px}
+  .occ-card h4{font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:6px}
+  .occ-card p{font-family:'Lora',serif;font-size:.92rem;color:#574F48}
+
+  /* HOW TO ORDER */
+  .order{background:var(--paper)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:40px}
+  @media(max-width:800px){.steps{grid-template-columns:1fr}}
+  .step{padding:28px;border:1px solid var(--shadow);border-radius:14px;background:var(--cream);position:relative}
+  .step-num{position:absolute;top:-14px;left:28px;background:var(--blue);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1rem;box-shadow:0 4px 12px rgba(107,134,176,.35)}
+  .step h4{font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:8px;margin-top:10px}
+  .step p{font-family:'Lora',serif;color:#574F48;font-size:.95rem}
+
+  /* CONTACT / FOOTER */
+  .contact{background:var(--ink);color:#F5EFE6;padding:80px 0 40px}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+  .contact h2{font-family:'Playfair Display',serif;color:#F5EFE6;font-weight:400;font-size:2rem;margin-bottom:16px}
+  .contact p{font-family:'Lora',serif;color:#C9BBA8;margin-bottom:10px}
+  .contact .big-link{font-family:'Parisienne',cursive;font-size:1.6rem;color:var(--yellow);display:block;margin:6px 0}
+  .contact .social-row{display:flex;gap:14px;margin-top:18px}
+  .social-row a{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);color:#F5EFE6;padding:8px 14px;border-radius:50px;font-size:.82rem;text-decoration:none;transition:background .2s}
+  .social-row a:hover{background:rgba(255,255,255,.15)}
+  footer{padding:24px 0;text-align:center;font-family:'Jost',sans-serif;font-size:.78rem;color:#A89B8D;letter-spacing:.06em}
+  footer .heart{color:var(--rose)}
+
+  @media(max-width:860px){
+    .hero{padding:90px 0 100px}.about-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.nav-links{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="container" aria-label="Primary">
+    <a href="#" class="logo-mark" aria-label="The Clover Studio home">
+      <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#F2D88B"/><path d="M16 8c-2 4-5 7-2 10s5 3 5 3c1-2-2-5-3-7" stroke="#7BA87B" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      The clover <span>studio</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:24px">
+      <div class="nav-links" role="menubar">
+        <a href="#about">About</a>
+        <a href="#bouquets">Bouquets</a>
+        <a href="#order">Order</a>
+      </div>
+      <a href="#order" class="cta-btn">DM to pre-order</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-label="Hero">
+    <img class="hero-img" src="Product_3.jpg" alt="" aria-hidden="true" />
+    <div class="container hero-inner">
+      <div class="label">Handmade in Dhaka, Bangladesh</div>
+      <h1>The clover <em>studio</em></h1>
+      <p>Forever flowers, hand-shaped from soft pipe cleaners and wrapped with care. Perfect for the ones you love — anniversaries, birthdays, and every special moment.</p>
+      <div class="hero-btns">
+        <a href="#bouquets" class="cta-btn">Browse bouquets</a>
+        <a href="#about" class="btn-secondary">Our story</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about" aria-label="About the studio">
+    <div class="container about-grid">
+      <div class="about-text">
+        <h3>Handcrafted, not mass-made.</h3>
+        <p>Every bouquet at The Clover Studio begins with a single pipe cleaner. We shape petals by hand, arrange flowers carefully, and wrap each arrangement in paper that feels like a gift before it is even given.</p>
+        <p>Based in Dhaka, we make <strong>forever flowers</strong> that never wilt — ideal for anniversaries, birthdays, or just because.</p>
+        <blockquote>"Handcrafted 🌸 — Dm to pre-order ✨ — Based in Dhaka BD"</blockquote>
+        <p style="font-family:'Lora',serif;color:#574F48;font-size:.92rem">Page · Product/service · Art · Always open</p>
+      </div>
+      <figure class="about-img" aria-label="Pink and red handmade bouquet">
+        <img src="Product_1.jpg" alt="Pink and red handmade pipe-cleaner bouquet wrapped in pink paper" />
+      </figure>
+    </div>
+  </section>
+
+  <section id="bouquets" class="products" aria-label="Bouquets">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our bouquets</h2>
+        <p class="sub">Each one shaped by hand — DM us for your favorite</p>
+      </div>
+      <div class="gallery" role="list">
+        <article class="card" role="listitem">
+          <img src="Product_2.jpg" alt="Blue lily bouquet with white trim in light blue wrapping with gold stripes" />
+          <div class="card-body">
+            <p class="tag">Handcrafted bouquet</p>
+            <h4>Blue Lily</h4>
+            <p>Soft blue lily with white trim, wrapped in light blue paper with gold stripes and pearl ribbon.</p>
+            <p class="price-note">Price on request — DM to pre-order</p>
+          </div>
+        </article>
+        <article class="card" role="listitem">
+          <img src="Product_3.jpg" alt="Yellow lily bouquet wrapped in white paper with white daisies" />
+          <div class="card-body">
+            <p class="tag">Handcrafted bouquet</p>
+            <h4>Sunshine Lily</h4>
+            <p>Bright yellow lily paired with white daisies, wrapped in crisp white paper with pearl trim.</p>
+            <p class="price-note">Price on request — DM to pre-order</p>
+          </div>
+        </article>
+        <article class="card" role="listitem">
+          <img src="Product_1.jpg" alt="Pink and red handmade pipe-cleaner bouquet in pink wrapping" />
+          <div class="card-body">
+            <p class="tag">Handcrafted bouquet</p>
+            <h4>Pink &amp; Red Bouquet</h4>
+            <p>A handmade mix of pink and red pipe-cleaner flowers wrapped in soft pink paper.</p>
+            <p class="price-note">Price on request — DM to pre-order</p>
+          </div>
+        </article>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="occasions" aria-label="Occasions">
+    <div class="container">
+      <div class="section-header">
+        <h2>Made for moments</h2>
+        <p class="sub">Anniversary, birthday, or just because — every bouquet fits.</p>
+      </div>
+      <div class="cards-row">
+        <div class="occ-card" aria-label="Anniversary"><div class="icon">💐</div><h4>Anniversary</h4><p>A forever bouquet for a forever love.</p></div>
+        <div class="occ-card" aria-label="Birthday"><div class="icon">🎂</div><h4>Birthday</h4><p>Celebrate someone with flowers that never fade.</p></div>
+        <div class="occ-card" aria-label="Special occasion"><div class="icon">🌸</div><h4>Any occasion</h4><p>Perfect for proposals, celebrations, and small joys.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="order" class="order" aria-label="How to order">
+    <div class="container">
+      <div class="section-header">
+        <h2>How to order</h2>
+        <p class="sub">Pre-orders via DM — we should craft your bouquet within 1–2 days.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><h4>DM to pre-order</h4><p>Message us on Instagram (@the_clover_studio_bd) or Facebook to check availability.</p></div>
+        <div class="step"><div class="step-num">2</div><h4>We craft it</h4><p>Every flower is shaped by hand — no factory, just care and patience.</p></div>
+        <div class="step"><div class="step-num">3</div><h4>Wrap & deliver</h4><p>Wrapped beautifully, delivered with a handwritten note if you wish.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" aria-label="Contact">
+    <div class="container contact-grid">
+      <div>
+        <h2>Get in touch</h2>
+        <p>Based in Dhaka, Bangladesh. Always open — orders by DM.</p>
+        <a href="mailto:thecloverstudio09@gmail.com" class="big-link">thecloverstudio09@gmail.com</a>
+        <p style="font-family:'Jost',sans-serif;font-size:.9rem;color:#C9BBA8;margin-top:4px">Instagram: @the_clover_studio_bd</p>
+        <div class="social-row">
+          <a href="https://www.instagram.com/the_clover_studio_bd/" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <span>Instagram</span>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61594375596224" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <span>Facebook</span>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h2>Visit</h2>
+        <p>Dhaka, Bangladesh</p>
+        <p style="font-family:'Lora',serif;color:#C9BBA8;font-style:italic">Handcrafted bouquets · Based in Dhaka BD</p>
+        <p style="margin-top:8px;font-family:'Jost',sans-serif;font-size:.85rem;color:#8A7E72">171 followers · 1 following · Not yet rated (0 reviews)</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">The Clover Studio — Handcrafted bouquets from Dhaka. <span class="heart">Made with love.</span> 2026.</div>
+</footer>
+
+</body>
+</html>
+
+
